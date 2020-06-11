@@ -6,23 +6,28 @@
 </head>
 <body><h1 class="title">Books Store <small>Your Cart</small></h1>
 <div class="container">
-    <table class="table table-hover">
-        <thead>
-        <th>Book name</th>
-        <th>PriceEach</th>
-        <th>Quantity</th>
-        </thead>
-        <tbody>
-        <tr th:each="item:${cartItems}">
-            <td th:text="${item.getBook().getName()}"></td>
-            <td th:text="${item.getBook().getPrice()}"></td>
-            <td th:text="${item.getQuantity()}"></td>
-        </tr>
-        <tr>
-            <td colspan="5"><a th:href="@{/}">Back to Listing</a></td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="table table-hover">
+
+            <thead>
+            <th>Book name</th>
+            <th>PriceEach</th>
+            <th>Quantity</th>
+            <th>PriceTotal</th>
+            </thead>
+            <tbody>
+
+            <tr th:each="item:${cartItems}">
+                <td th:text="${item.getBook().getName()}"></td>
+                <td th:text="${item.getBook().getPrice()}"></td>
+                <td th:text="${item.getQuantity()}"></td>
+                <td th:text="${item.totalPrice()}"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><a th:href="@{/}">Back to Listing</a></td>
+            </tr>
+            </tbody>
+        </table>
+
 </div>
 </body>
 </html>

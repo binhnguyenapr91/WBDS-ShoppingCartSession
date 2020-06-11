@@ -35,4 +35,10 @@ public class Item {
                 ", quantity=" + quantity +
                 '}';
     }
+
+    public float totalPrice(){
+        Float total;
+        total = this.quantity * Float.parseFloat(this.book.getPrice());
+        return total;
+    }
 }
