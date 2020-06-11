@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <title>Cart</title>
 </head>
-<body><h1 class="title">Books Store <small>Your Cart</small></h1>
+<body>
+<body><h1 class="title">Books Store <small>Book Detail</small></h1>
 <div class="container">
     <table class="table table-hover">
         <thead>
         <th>Book name</th>
-        <th>PriceEach</th>
-        <th>Quantity</th>
+        <th>Price</th>
+        <th>Image</th>
         </thead>
         <tbody>
-        <tr th:each="item:${cartItems}">
-            <td th:text="${item.getBook().getName()}"></td>
-            <td th:text="${item.getBook().getPrice()}"></td>
-            <td th:text="${item.getQuantity()}"></td>
+        <tr>
+            <td th:text="${book.getName()}"></td>
+            <td th:text="${book.getPrice()}"></td>
+            <td><img style="width: 200px; height: 400px" th:src="@{'images/'+${book.getImage_url()}}"></td>
         </tr>
         <tr>
             <td colspan="5"><a th:href="@{/}">Back to Listing</a></td>
+        </tr>
+        <tr>
+            <td colspan="5"><a th:href="@{/viewCart}">View cart</a></td>
         </tr>
         </tbody>
     </table>
