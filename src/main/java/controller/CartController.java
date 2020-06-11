@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import service.BookService;
 
 import java.util.ArrayList;
@@ -36,9 +37,15 @@ public class CartController {
             updateQuantity(book,cartItems);
             model.addAttribute("cartItems", cartItems);
         }
+        model.addAttribute("books",bookService.findAll());
         return "cart";
     }
-
+    @GetMapping("/viewCart")
+    ModelAndView viewCart(@ModelAttribute("cart") List<Item> cartItems){
+        ModelAndView modelAndView = new ModelAndView("cart");
+        modelAndView.addObject("cartItems",cartItems);
+        return modelAndView;
+    }
     public Item checkBookInCart(Book book, List<Item> cartItems) {
         Iterator itr = cartItems.iterator();
         while (itr.hasNext()){
